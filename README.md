@@ -30,7 +30,7 @@ Along with an installation of Python 3 (with the standard Conda distribution pac
 Currently, `TransitCurveGen` is not available through `pip`, though future versions will be. In order to install this package to your Python library, run
 ```
 git clone https://github.com/joshjchayes/TransitCurveGen.git
-cd TransitGurveGen
+cd TransitCurveGen
 python setup.py install
 ```
 
