@@ -5,7 +5,6 @@ These objects are useful for keeping track of spectra, and can be combined
 to give spectra with different spectral resolutions at different wavebands
 
 '''
-from .combined_spectrum import CombinedSpectrum
 import matplotlib.pyplot as plt
 
 class Spectrum:
@@ -41,25 +40,6 @@ class Spectrum:
         self.noise_level = info_dict['noise']
 
         self.spectra = self # This is here to help with CombinedSpectrum
-
-
-    def combine(self, spectrum):
-        '''
-        Combines the Spectrum with another to produce a spectrum which covers
-        multiple wavebands with different resolutions
-
-        Parameters
-        ----------
-        spectrum : TransitCurveGen.Spectrum
-            The spectrum with which to combine
-
-        Returns
-        -------
-        combined_spectrum : TransitCurveGen.CombinedSpectrum
-            The combined spectrum
-        '''
-        raise NotImplementedError()
-        #return CombinedSpectrum(self, spectrum)
 
     def plot(self, savepath=None, show=True):
         '''

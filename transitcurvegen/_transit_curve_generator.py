@@ -5,7 +5,7 @@ An object to generate TransitCurves
 '''
 from .transit_curve import TransitCurve
 from .orbital_analysis import find_orbital_period, find_orbital_radius, find_transit_duration
-from.limb_darkening_handler import LimbDarkeningHandler
+from .limb_darkening_handler import LimbDarkeningHandler
 from .host_analysis import calculate_logg
 
 import numpy as np
@@ -177,18 +177,18 @@ class TransitCurveGenerator:
                 delta_ti += d1
                 delta_tf += d2
 
-            times = np.linspace(t0 - delta_ti, t0 + delta_tf, 10000)
+            times = np.linspace(t0 - delta_ti, t0 + delta_tf, 200)
 
             # Calculate the transit light curve!
             model = batman.TransitModel(params, times)
             flux = model.light_curve(params)
 
-            unc = np.zeros(len(spectrum.wavelengths))
+            unc = np.zeros(len(times))
 
             parameter_dict = {'Rp':Rp, 'P':period, 't0':t0, 'a':orbital_radius,
                               'inc':inc, 'limb_darkening_params':ld_params[i],
                               'limb_darkening_model':limb_darkening_model,
-                              'w':w}
+                              'w':w, 'ecc':ecc}
 
             # Make the noiseless TransitCurve
             light_curves[i] = TransitCurve(times, flux, unc, parameter_dict)
